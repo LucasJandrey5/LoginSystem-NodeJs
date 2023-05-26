@@ -77,13 +77,12 @@ app.post("/validate", async (req, res) => {
     });
   }
 
+  delete validUser.dataValues.password;
+  console.log(validUser.dataValues);
+
   return res.status(200).json({
     erro: false,
-    user: {
-      id: validUser.id,
-      name: validUser.name,
-      email: validUser.email,
-    },
+    user: validUser.dataValues,
   });
 });
 
@@ -186,6 +185,24 @@ app.post("/createRace", async (req, res) => {
         mensagem: erro,
       });
     });
+});
+
+app.post("/getAllUsers", async (req, res) => {
+  const users = await User.findAll();
+  // .then(() => {
+  //     console.log("Usuarios resgatados com sucesso!");
+  //   })
+  //   .catch((erro) => {
+  //     return res.status(400).json({
+  //       erro: true,
+  //       mensagem: erro,
+  //     });
+  //   });
+
+  return res.json({
+    erro: false,
+    users: users,
+  });
 });
 
 app.listen(8080, () => {
