@@ -31,7 +31,7 @@ app.post("/signin", async (req, res) => {
   if (requestUser === null) {
     return res.status(400).json({
       erro: true,
-      mensagem: "Erro: Email ou senha incorreto! - usuario inexistente",
+      mensagem: "Erro: Email ou senha incorreto! - usuario inexistenteaaaaaa",
     });
   }
 
